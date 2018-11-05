@@ -1,0 +1,85 @@
+<section class="hero is-link is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+
+      <h1 class="title pacifico medium-text">
+        modern web store
+      </h1>
+
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <!-- Recuperar do javascript usa [] -->
+          <form [formGroup]="form">
+
+            <div class="field">
+              <div class="control" id="emailControl">
+                <input class="input is-medium" type="email" (blur)="checkEmail()" placeholder="E-mail" formControlName="email"
+                  [ngClass]="{'is-danger': (!form.controls.email.valid && !form.controls.email.pristine)}">
+                <span class="tag is-danger" *ngIf="!form.controls.email.valid && !form.controls.email.pristine">E-mail
+                  inválido</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <input class="input is-medium" type="password" placeholder="Senha" formControlName="password" [ngClass]="{'is-danger': (!form.controls.password.valid && !form.controls.password.pristine)}">
+                <span class="tag is-danger" *ngIf="!form.controls.password.valid && !form.controls.password.pristine">Senha
+                  inválida</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <!-- Mandar ação da tela para o javascrip usa () -->
+              <button (click)="submit()" class="button is-link is-inverted is-outlined is-medium is-fullwidth"
+                [disabled]="!form.valid">Entrar</button>
+            </div>
+
+            <div class="field">
+              <button class="button is-link is-fullwidth">Ainda não sou cadastrado</button>
+            </div>
+            <hr>
+            <div class="field">
+              <button class="button is-link is-fullwidth" (click)="showModal()">Termos de Uso</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Termos de Uso</p>
+      <button class="delete" aria-label="close" (click)="hideModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      Aqui vão os termos de uso do site
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="hideModal()">OK</button>
+    </footer>
+  </div>
+</div>
+
+<!-- COLOCAR NO BOTÃO "AINDA NAO SOU CADASTRADO" O (click)="showModalCadastro()"
+  
+  <div class="modal" id="modalCadastro">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Cadastro</p>
+        <button class="delete" aria-label="close" (click)="hideModalCadastro()"></button>
+      </header>
+      <section class="modal-card-body">
+        <app-signup-page></app-signup-page>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button" (click)="hideModalCadastro()">OK</button>
+      </footer>
+    </div>
+  </div> -->

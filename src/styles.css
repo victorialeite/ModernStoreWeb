@@ -5,8 +5,11 @@
 .roboto {
     font-family: 'Roboto'
 }
-.medium-text {
+.small-text {
     font-size: 1.5em;
+}
+.medium-text {
+    font-size: 2.5em;
 }
 .larger-text {
     font-size: 3em;
