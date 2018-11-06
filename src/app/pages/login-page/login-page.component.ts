@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CustomValidator } from './../../validators/custom.validator';
-import { DataService } from './../../services/data.services';
+import { DataService } from '../../services/data.service';
 import { Ui } from './../../utils/ui';
 
 @Component({
@@ -30,6 +30,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   checkEmail(){
@@ -53,11 +54,11 @@ export class LoginPageComponent implements OnInit {
     this.ui.setInactive('modal');
   }
 
-  showModalCadastro(){
-    this.ui.setActive('modalCadastro');
-  }
+  // showModalCadastro(){
+  //   this.ui.setActive('modalCadastro');
+  // }
 
-  hideModalCadastro(){
-    this.ui.setInactive('modalCadastro');
-  }
+  // hideModalCadastro(){
+  //   this.ui.setInactive('modalCadastro');
+  // }
 }

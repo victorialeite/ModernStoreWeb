@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from './../../../services/cart.service';
 
 @Component({
   selector: 'app-sub-menu',
@@ -6,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubMenuComponent implements OnInit {
 
-  constructor() { }
+  public totalItems: number = 0;
+
+  constructor(private cartService: CartService) { 
+    this.cartService.cartChange.subscribe((data) => {
+      console.log(data);
+      this.totalItems = data.length;
+    });
+  }
 
   ngOnInit() {
   }
-
 }

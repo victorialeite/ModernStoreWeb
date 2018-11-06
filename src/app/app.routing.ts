@@ -10,7 +10,8 @@ const appRoutes: Routes = [
     { path: '', component: LoginPageComponent},
     { path: 'home', component: HomePageComponent},
     { path: 'signup', component: SignupPageComponent},
-    { path: 'cart', component: CartPageComponent}
+    { path: 'cart', component: CartPageComponent},
+    { path: 'login', component: LoginPageComponent}
 ];
 
 export const RoutingProviders: any[] = [];
