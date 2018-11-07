@@ -1,9 +1,11 @@
 <div id="navbarMenuHeroA" class="navbar-menu">
+  <a class="navbar-item" *ngIf="data">Bem vindo, {{ user }}</a>
   <a class="navbar-item" routerLink="/home">Home</a>
+  <a class="navbar-item" routerLink="/login" *ngIf="data">Meu perfil</a>
   <a class="navbar-item" routerLink="/cart">Carrinho ({{ totalItems }})</a>
-  <a class="navbar-item" routerLink="/">Meu perfil</a>
+  <a class="navbar-item" routerLink="/login" *ngIf="!data">Login</a>
   <span class="navbar-item">
-    <a class="button is-link is-inverted">
+    <a class="button is-link is-inverted" (click)="logout()" *ngIf="data">
       <span class="icon">
         <i class="fa fa-power-off"></i>
       </span>

@@ -25,9 +25,14 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 // Services
 import { CartService } from './services/cart.service';
+import { AuthService } from './services/auth.service';
+
+//Directives
+import { NumberDirective } from './directives/number.directive';
 
 @NgModule({
   declarations: [
+    NumberDirective,
     AppComponent,
     HeadbarComponent,
     SubMenuComponent,
@@ -45,7 +50,7 @@ import { CartService } from './services/cart.service';
     HttpModule, 
     Routing
   ],
-  providers: [CartService], //global
+  providers: [CartService, AuthService], //global
   bootstrap: [AppComponent]
 })
 export class AppModule { }

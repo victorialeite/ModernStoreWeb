@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CustomValidator } from './../../validators/custom.validator';
 import { DataService } from '../../services/data.service';
 import { Ui } from './../../utils/ui';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-page',
@@ -12,8 +13,9 @@ import { Ui } from './../../utils/ui';
 export class SignupPageComponent implements OnInit {
 
   public form: FormGroup;
+  public errors: any[] = [];
 
-  constructor(private fb: FormBuilder, private ui: Ui, private dataService: DataService) {
+  constructor(private fb: FormBuilder, private ui: Ui, private dataService: DataService, private router: Router) {
     this.form = this.fb.group({
       firstName: ['', Validators.compose([
         Validators.minLength(3),
@@ -76,9 +78,10 @@ export class SignupPageComponent implements OnInit {
     this.dataService
       .createUser(this.form.value)
       .subscribe(result => {
-        console.log(result);
+        alert('Bem vindo ao Modern Store');
+        this.router.navigateByUrl('/login');
       }, error => {
-        console.log(error);
+        this.errors = JSON.parse(error._body).errors;
       });
   }
 

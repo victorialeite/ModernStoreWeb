@@ -1,3 +1,4 @@
+<app-headbar></app-headbar>
 <section class="hero is-link is-fullheight">
   <div class="hero-body">
     <div class="container has-text-centered">
@@ -8,14 +9,20 @@
 
       <div class="columns">
         <div class="column is-half is-offset-one-quarter">
+
+          <div class="notification is-danger" *ngIf="errors.length > 0">
+            <ul>
+              <li *ngFor="let erro of errors">{{ erro.message }}</li>
+            </ul>
+          </div>
           <!-- Recuperar do javascript usa [] -->
           <form [formGroup]="form">
 
             <div class="field">
-              <div class="control" id="emailControl">
-                <input class="input is-medium" type="email" (blur)="checkEmail()" placeholder="E-mail" formControlName="email"
-                  [ngClass]="{'is-danger': (!form.controls.email.valid && !form.controls.email.pristine)}">
-                <span class="tag is-danger" *ngIf="!form.controls.email.valid && !form.controls.email.pristine">E-mail
+              <div class="control" id="usernameControl">
+                <input class="input is-medium" type="username" placeholder="Usuário" formControlName="username"
+                  [ngClass]="{'is-danger': (!form.controls.username.valid && !form.controls.username.pristine)}">
+                <span class="tag is-danger" *ngIf="!form.controls.username.valid && !form.controls.username.pristine">Usuário
                   inválido</span>
               </div>
             </div>
