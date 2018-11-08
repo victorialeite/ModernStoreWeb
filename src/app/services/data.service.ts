@@ -19,6 +19,17 @@ export class DataService {
             .map((res: Response) => res.json());
     }
 
+    createOrder(data: any) {
+        var token = localStorage.getItem('mws.token');
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', `Bearer${token}`); 
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http
+            .post(this.serviceUrl + 'v1/orders', data, options)
+            .map((res: Response) => res.json());
+    }
+
     authenticate(data: any) {
         var dt = "grant_type=password&username=" + data.username + "&password=" + data.password;
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -30,15 +41,15 @@ export class DataService {
     }
 
     validateToken(token: string) {
-        if(!token || token == ''){
+        if (!token || token == '') {
             return false;
         }
         return true;
     }
 
-    // getProducts() {
-    //     return this.http
-    //         .get('https://modernstore-api.azurewebsites.net/v1/products')
-    //         .map((res: Response) => res.json()); // mapeia o response para um objeto do tipo json
-    // }
+    getProducts() {
+        return this.http
+            .get(this.serviceUrl + 'v1/products')
+            .map((res: Response) => res.json()); // mapeia o response para um objeto do tipo json
+    }
 }
